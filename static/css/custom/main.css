@@ -1,0 +1,368 @@
+@import url(https://fonts.googleapis.com/css?family=Arvo:700);
+
+@import url(https://fonts.googleapis.com/css?family=Seaweed+Script);
+	body{
+        background: url(/img/fondo_banano_1.png) no-repeat center top;
+        background-position: center;
+        background-size: 100% 100%;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+	}
+	
+	/*Estilos para el encabezado*/
+	.header{
+		width: 100%;
+		height: 100px;
+		position: fixed;
+		top: 0;left: 0;
+	}
+	.container{
+		width: 100%;
+		
+		margin: auto;
+	}
+	.container .btn-menu, .logo{
+		float: left;
+		line-height:100px;
+	}
+	.container .btn-menu label{
+		color: rgb(0, 0, 0);
+		font-size: 25px;
+		cursor: pointer;
+	}
+	.logo h1{
+		color: #fff;
+		font-weight: 400;
+		font-size: 22px;
+		margin-left: 10px;
+	}
+	.container .menu{
+		float: right;
+		line-height: 100px;
+	}
+	.container .menu a{
+		display: inline-block;
+		padding: 15px;
+		line-height: normal;
+		text-decoration: none;
+		color: rgb(0, 0, 0);
+		transition: all 0.3s ease;
+		border-bottom: 2px solid transparent;
+		font-size: 15px;
+		margin-right: 5px;
+	
+	}
+	.container .menu a:hover{
+		border-bottom: 2px solid #c7c7c7;
+		padding-bottom: 5px;
+	}
+	/*Fin de Estilos para el encabezado*/
+
+	/*Menù lateral*/
+	.menu_png{
+		width: 35px;
+		height: 35px;
+	}
+
+	#btn-menu{
+		display: none;
+	}
+	.btn-menu label{
+		background-image: url("img/menu.png");
+		margin: 25px;
+		padding: 25px;
+
+	}
+
+	.container-menu{
+		position: fixed;
+		background: rgb(0,0,0,0.5);
+		width: 100%;
+		height: 100%;
+		top: 0;left: 0;
+		transition: all 500ms ease;
+		opacity: 0;
+		visibility: hidden;
+	}
+	#btn-menu:checked ~ .container-menu{
+		opacity: 1;
+		visibility: visible;
+	}
+	.cont-menu{
+		width: 100%;
+		max-width: 250px;
+		background: #1c1c1c;
+		height: 100%;
+		position: relative;
+		transition: all 500ms ease;
+		transform: translateX(-100%);
+	}
+	#btn-menu:checked ~ .container-menu .cont-menu{
+		transform: translateX(0%);
+	}
+	.cont-menu nav{
+		transform: translateY(15%);
+	}
+	.cont-menu nav a{
+		display: block;
+		text-decoration: none;
+		padding: 20px;
+		color: #c7c7c7;
+		border-left: 5px solid transparent;
+		transition: all 400ms ease;
+	}
+	.cont-menu nav a:hover{
+		border-left: 5px solid #c7c7c7;
+		background: #1f1f1f;
+	}
+	.cont-menu label{
+		position: absolute;
+		right: 5px;
+		top: 10px;
+		color: #fff;
+		cursor: pointer;
+		font-size: 18px;
+	}
+	/*Fin de Menù lateral*/
+   
+
+
+/*REGISTRO_COSECHA*/
+fieldset{
+    background-color: rgba(34, 34, 34, 0.671);;
+    color:White;
+	position: relative;
+	width:50% ;
+	top: 10%;
+	left: 25%;
+	text-align: center;
+	border-radius:20px;}
+	
+    
+   
+legend{
+	font-family: sans-serif;
+	color:White;
+	font-weight: 800;
+	font-size: 25px;
+}
+label{
+	font-family: sans-serif;
+	color: #7fff00;
+	font-weight: 600;
+}
+
+.box input[type="submit"]{
+
+    border: none;
+
+    outline: none;
+    height: 40px;
+    background: rgba(29, 190, 29, 0.671);
+    color: White;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 100px;
+    margin-top: 5%;
+}
+
+input[type="text"]{
+
+    border: none;
+
+    outline: none;
+    height: 40px;
+    
+    color: Black;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 400px;
+    margin-top: 5%;
+}
+
+input[type="number"]{
+
+    border: none;
+
+    outline: none;
+    height: 40px;
+    
+    color: Black;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 400px;
+    margin-top: 5%;
+}
+
+select {
+	text-align: center;
+    border: none;
+
+    outline: none;
+    height: 40px;
+    
+    color: Black;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 400px;
+    margin-top: 5%;
+}
+
+input[type="date"]{
+	text-align: center;
+    border: none;
+
+    outline: none;
+    height: 40px;
+    
+    color: Black;
+    font-size: 18px;
+    border-radius: 20px;
+    width: 200px;
+    margin-top: 5%;
+}
+
+/*texto*/
+.container h1{
+	text-align: center;
+	margin: 35px;
+	padding:50px ;
+}
+
+.plate {
+
+  width: 400px;
+  
+  margin: 10% auto;
+}
+.shadow {
+  color: rgba(29, 190, 29, 0.671);;
+  font-family: Arvo;
+  font-weight: bold;
+  text-shadow:
+    -3px -3px 0 #222,
+    3px -3px 0 #222,
+    -3px 3px 0 #222,
+    3px 3px 0 #222,
+    4px 4px 0 #fff,
+    5px 5px 0 #fff,
+    6px 6px 0 #fff,
+    7px 7px 0 #fff;
+  line-height: 0.8em;
+  letter-spacing: 0.1em;
+  transform: scaleY(0.7);
+  -webkit-transform: scaleY(0.7);
+  -moz-transform: scaleY(0.7);
+  margin:0;
+  text-align: center;
+ 
+}
+.script {
+  font-family: "Seaweed Script";
+  color: #7fff00;
+  text-align: center;
+  font-size: 40px;
+  position: relative;
+  margin:0;
+}
+.script span {
+  background-color: #222;
+  padding: 0 0.3em;
+}    
+.script:before {
+  content:"";
+  display: block;
+  position: absolute;
+  z-index:-1;
+  top: 50%;
+  width: 100%;
+  border-bottom: 3px solid #fff;
+}
+.text1 {
+  font-size: 60px;
+}
+
+
+/*barra*/
+.scroll{
+    overflow-x:auto;
+}
+
+/*bootstrap*/
+.table {
+	width: 100%;
+	margin-bottom: 1rem;
+	color: #000000;
+	background-color: #cfffa0be;
+  }
+
+  .table th{
+	color:#054713;
+  }
+  
+  .table th,
+  .table td {
+	padding: 0.75rem;
+	vertical-align: top;
+	border-top: 1px solid #dee2e6;
+  }
+  
+  .table thead th {
+	vertical-align: bottom;
+	border-bottom: 2px solid #dee2e6;
+  }
+  
+  .table tbody + tbody {
+	border-top: 2px solid #dee2e6;
+  }
+  
+
+  .btn {
+	display: inline-block;
+	font-weight: 400;
+	color: #212529;
+	text-align: center;
+	vertical-align: middle;
+	-webkit-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+	background-color: transparent;
+	border: 1px solid transparent;
+	padding: 0.375rem 0.75rem;
+	font-size: 1rem;
+	line-height: 1.5;
+	border-radius: 0.25rem;
+	transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  }
+  
+  .btn-danger {
+	color: #fff;
+	background-color: #dc3545;
+	border-color: #dc3545;
+  }
+  
+  .btn-danger:hover {
+	color: #fff;
+	background-color: #c82333;
+	border-color: #bd2130;
+  }
+
+  .btn-primary {
+	color: #fff;
+	background-color: #007bff;
+	border-color: #007bff;
+  }
+  
+  .btn-primary:hover {
+	color: #fff;
+	background-color: #0069d9;
+	border-color: #0062cc;
+  }
+
+  .btn-sm, .btn-group-sm > .btn {
+	padding: 0.25rem 0.5rem;
+	font-size: 0.875rem;
+	line-height: 1.5;
+	border-radius: 0.2rem;
+  }
