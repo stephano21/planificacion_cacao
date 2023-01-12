@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inicio de sesion</title>
+    <title>Crear Cuenta</title>
     <link rel="stylesheet" href="static/css/bootstrap.min.css">
 </head>
 
@@ -14,14 +14,29 @@
         <div class="card col-sm-4">
             <div id="alert"></div>
             <div class="card-header">
-                Inicio de sesion
+                Crear cuenta
             </div>
             <!--cuadro de loguin -->
-            <form id="login"  method="post">
+            <form id="create_account"  method="post">
                 <div class="card-body">
                     <div class="input-group mb-3">
-                        <span class="input-group-text">Usuario</span>
-                        <input type="text" class="form-control" placeholder="Usuario" id="user" name="user"
+                        <span class="input-group-text">Cédula</span>
+                        <input type="text" class="form-control" placeholder="Cédula" id="id"
+                            aria-label="Username" aria-describedby="basic-addon1" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Nombre</span>
+                        <input type="text" class="form-control" placeholder="Nombre" id="name"
+                            aria-label="Username" aria-describedby="basic-addon1" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Apellido</span>
+                        <input type="text" class="form-control" placeholder="Apellido" id="lname"
+                            aria-label="Username" aria-describedby="basic-addon1" required>
+                    </div>
+                    <div class="input-group mb-3">
+                        <span class="input-group-text">Correo</span>
+                        <input type="email" class="form-control" placeholder="Correo" id="email"
                             aria-label="Username" aria-describedby="basic-addon1" required>
                     </div>
                     <div class="input-group mb-3">
@@ -31,9 +46,9 @@
                     </div>
                     <div class="input-group mb-3">
                         <input type="submit" class="form-control btn btn-primary" aria-label="Username"
-                            aria-describedby="basic-addon1">
+                            aria-describedby="basic-addon1" value="Crear cuenta">
                     </div>
-                    <a href="create_account.html">No tiene cuenta? Crear Cuenta</a>
+                    <a href="/">Ya tiene una cuenta? Iniciar Sesión</a>
                 </div>
             </form>
             <!--fin de cuadro -->
