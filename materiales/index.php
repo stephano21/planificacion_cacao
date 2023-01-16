@@ -1,7 +1,7 @@
 <?php
 session_start();
 //error_reporting(0);
-include("../php/scrips/conn.php");
+include("../php/scripts/conn.php");
 if (!isset($_SESSION['user'])) {
     //echo $_SESSION['user'];
     echo '<script> alert("Por favor, inicia sesión"); 
