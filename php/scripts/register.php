@@ -21,11 +21,14 @@ if(isset($_POST['flag'])){
         $date = date("Y-m-d H:i:s");
         
         echo create_material($name,$detail,$price,$quantity,$usuario,$date,$type);
+    
     }else if ($flag==2){
         $name= $_POST['name'];
         $plantas= $_POST['plantas'];
+        //agg el tipo de cultivo
+        $t_cultivo = $_POST['cultivo']
         $dim= $_POST['dim'];
-        echo create_lote($name,$plantas,$dim);
+        echo create_lote($name,$plantas,$t_cultivo,$dim);
     }
 }
 ?>

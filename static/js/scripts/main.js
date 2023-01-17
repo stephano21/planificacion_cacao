@@ -76,11 +76,13 @@ $(function(){
         let flag = 2;
         let name= $("#t_name").val();
         let plantas= $("#t_plant").val();
+        //AGG EL CAMPO TIPO CULTIVO
+        let cultivo = $("#t_cultivo").val();
         let dim= $("#t_dim").val();
         $.ajax({
             url:"../php/scripts/register.php",
             type:"POST",
-            data:{flag,name,plantas,dim},
+            data:{flag,name,plantas,cultivo,dim},
             success: function(response){
                 let data=JSON.parse(response);
                 console.log(data.message)
@@ -94,6 +96,7 @@ $(function(){
         let flag = 3;
         let name= $("#t_name").val();
         let plantas= $("#t_plant").val();
+        
         let dim= $("#t_dim").val();
         $.ajax({
             url:"../php/scripts/register.php",
