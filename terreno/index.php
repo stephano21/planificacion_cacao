@@ -48,6 +48,18 @@ $usuario = $_SESSION['user'];
                                 <span class="input-group-text">Plantas</span>
                                 <input type="text" id="t_plant" class="form-control" placeholder="número de plantas" name="area" aria-label="Username" aria-describedby="basic-addon1" required>
                             </div>
+
+                             <!--Ingreso caja de seleccion para registrar el (tipo de cultivo)-->
+                             <div class = "input-group mb-3">
+                                <select class="form-select" id="m_type_planta" aria-label="Default select example" name="supplier">
+                                    <option selected value="0">Seleccione un tipo de cultivo</option>
+                                    <!--EJEMPLOS:-->
+                                    <option value="1">CAFE</option>
+                                    <option value="2">VERDE</option>
+                                    <option value="3">MADURA</option>
+                                </select>
+                            </div>
+
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Dimención</span>
                                 <input type="text" id="t_dim" class="form-control" id="password" placeholder="X x Y" name="description" aria-label="Username" aria-describedby="basic-addon1" required>
@@ -69,6 +81,8 @@ $usuario = $_SESSION['user'];
                             <th scope="col">Descripción</th>
                             <th scope="col">Cantidad</th>
                             <th scope="col">Tipo</th>
+                             <!--ingreso el campo (tipo planta)-->
+                             <th scope ="col">Tipo de cultivo</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -78,6 +92,8 @@ $usuario = $_SESSION['user'];
                             <td>Martillo mango de madera</td>
                             <td>5</td>
                             <td>Herramienta</td>
+                            <!--EJEMPLO DE TIPO DE PLANTA-->
+                            <td>planta verde</td>
                             <td>
                                 <button class="btn btn-danger">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">
@@ -98,6 +114,8 @@ $usuario = $_SESSION['user'];
                             <td>Lorem, ipsum dolor sit amet </td>
                             <td>20</td>
                             <td>Herramienta</td>
+                            <!--EJEMPLO DE TIPO DE PLANTA-->
+                            <td>planta verde</td>
                             <td>
                                 <button class="btn btn-danger">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3" viewBox="0 0 16 16">

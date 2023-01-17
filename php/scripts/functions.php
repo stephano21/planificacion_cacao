@@ -18,11 +18,11 @@ function create_material($name,$detail,$price,$quantity,$usuario,$date,$type) {
     
     return $json=json_encode($res);
 }
-
-function create_lote($name,$plantas,$dim){
+//AGREGO EL CAMPO TIPO TABLAS Y ASI MISMO EN LA INSERCIÓN
+function create_lote($name,$plantas,$tipo_cultivo,$dim){
     require_once("conn.php");
     $res=[];
-    $sql= mysqli_query($conn,"INSERT INTO terreno (nombre_terreno,n_plantas,dimencion)VALUES('$name','$plantas','$dim')");
+    $sql= mysqli_query($conn,"INSERT INTO terreno (nombre_terreno,n_plantas,tipo_cultivo,dimencion)VALUES('$name','$plantas','$tipo_cultivo','$dim')");
     if(!$sql){
         $res=array(
             "class"=>"danger",
