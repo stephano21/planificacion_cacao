@@ -26,9 +26,12 @@ if(isset($_POST['flag'])){
         $name= $_POST['name'];
         $plantas= $_POST['plantas'];
         //agg el tipo de cultivo
-        $t_cultivo = $_POST['cultivo']
+        $t_cultivo = $_POST['cultivo'];
         $dim= $_POST['dim'];
         echo create_lote($name,$plantas,$t_cultivo,$dim);
+    }elseif($flag==3){
+        echo'emmppitry';
+    }elseif($flag==4){
+        echo 'RSPISE';
     }
 }
-?>

@@ -5,8 +5,8 @@ new Chart(ctx, {
     data: {
         labels: ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio'],
         datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
+            label: 'Lb',
+            data: [200, 150, 180, 220, 210, 300],
             borderWidth: 1
         }]
     },

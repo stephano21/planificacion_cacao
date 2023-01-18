@@ -37,4 +37,5 @@ function create_lote($name,$plantas,$t_cultivo,$dim){
     
     return $json=json_encode($res);
 }
+
 ?>

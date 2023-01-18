@@ -25,9 +25,9 @@ $usuario = $_SESSION['user'];
         <nav aria-label="Page navigation example sticky-top">
             <ul class="pagination">
                 <li class="page-item "><a class="page-link" href="/home">Inicio</a></li>
+                <li class="page-item active"><a class="page-link" href="/planificacion">Planificación</a></li>
                 <li class="page-item"><a class="page-link" href="/materiales/">Materiales</a></li>
                 <li class="page-item"><a class="page-link" href="/terreno">Terreno</a></li>
-                <li class="page-item active"><a class="page-link" href="/planificacion">Planificación</a></li>
             </ul>
         </nav>
         <div class="row">
@@ -123,7 +123,7 @@ $usuario = $_SESSION['user'];
                 </div>
                 <div class="input-group mb-3"></div>
                 <!-- planing -->
-                <div class="card pd-2 " style="width: 38rem;">
+                <div class="card pd-2 " style="width: 35rem;">
                     <div class="card-header">
                         Planificacion
                     </div>
@@ -132,53 +132,55 @@ $usuario = $_SESSION['user'];
                             <div id="alert"></div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Nombre</span>
-                                <input type="text" id="p_id" class="form-control" placeholder="Nombre de planificación" name="id" aria-label="Username" aria-describedby="basic-addon1" required>
+                                <input type="text" id="p_name" class="form-control" placeholder="Nombre de planificación" name="id" aria-label="Username" aria-describedby="basic-addon1" required>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Fecha de inicio</span>
-                                <input type="date" id="pl_inicio" class="form-control" name="f_inicio" aria-label="Username" aria-describedby="basic-addon1" required>
+                                <input type="date" id="p_inicio" class="form-control" name="f_inicio" aria-label="Username" aria-describedby="basic-addon1" required>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Fecha de fin</span>
-                                <input type="date" id="p_address" class="form-control" name="f_fin" aria-label="Username" aria-describedby="basic-addon1" required>
+                                <input type="date" id="p_fin" class="form-control" name="f_fin" aria-label="Username" aria-describedby="basic-addon1" required>
+                            </div>
+                            <div class="input-group mb-3 row" id="lt_mat">
+                                <div class="alert alert-secondary alert-dismissible fade show col-sm-3 m-1 p-3" role="alert">
+                                    <strong>material 1</strong>
+                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                                </div>
                             </div>
                             <div class="input-group mb-3">
-                                <button type="button" class="btn btn-primary">Añadir materiales</button>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-primary">Añadir terreno</button>
-                            </div>
-                            <div class="input-group mb-3">
-                                <select class="form-select" id="tool" aria-label="Default select example" name="tool">
-                                    <option selected value="0">Herramienta</option>
+                                <select class="form-select" id="p_material" aria-label="Default select example" name="tool">
+                                    <option selected value="0">Seleccionar Materiales</option>
                                     <option value="1">One</option>
                                     <option value="2">Twoterreno</option>
                                     <option value="3">Three</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
-                                <select class="form-select" id="pt_insumo" aria-label="Default select example" name="insumo">
-                                    <option selected value="0">Insumos</option>
+                                <button type="button" class="btn btn-primary" id="bt_material">Añadir material</button>
+                            </div>
+                            <div class="input-group mb-3">
+                                <select class="form-select" id="pt_lote" aria-label="Default select example" id="p_terreno" name="lote">
+                                    <option selected value="0">Seleccionar Terreno</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
-                                <select class="form-select" id="pt_lote" aria-label="Default select example" name="lote">
-                                    <option selected value="0">Lotes</option>
+                                <button type="button" class="btn btn-primary" id="bt_terreno">Añadir terreno</button>
+                            </div>
+
+                            <div class="input-group mb-3">
+                                <select class="form-select" id="p_trabajador" aria-label="Default select example" name="insumo">
+                                    <option selected value="0">Seleccionar Tabajador</option>
                                     <option value="1">One</option>
                                     <option value="2">Two</option>
                                     <option value="3">Three</option>
                                 </select>
                             </div>
                             <div class="input-group mb-3">
-                                <select class="form-select" id="pt_workers" aria-label="Default select example" name="workers">
-                                    <option selected value="0">Trabajdores</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
-                                </select>
+                                <button type="button" class="btn btn-primary" id="bt_trabajador">Añadir Tabajador</button>
                             </div>
                             <div class="input-group mb-3">
                                 <input type="submit" class="form-control btn btn-primary" aria-label="Username" aria-describedby="basic-addon1" value="Registrar">
