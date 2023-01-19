@@ -8,7 +8,8 @@ if (!isset($_SESSION['user'])) {
     window.location = "/"</script>';
 }
 require_once("conn.php");
-$sql= mysqli_query($conn,"SELECT * FROM terreno WHERE estado='0' ORDER BY nombre_terreno");
+$id=$_GET['id'];
+$sql= mysqli_query($conn,"SELECT tp.id_terrPlan,t.id_terreno,t.nombre_terreno FROM planificacion as p, terreno as t, terrPlan as tp WHERE (t.id_terreno=tp.id_terreno AND p.id_planificacion=tp.id_plan)AND p.id_planificacion='$id'");
 if(!$sql){
     /* $res[]=array(
         "class"=>"danger",
@@ -22,10 +23,7 @@ while ($row=mysqli_fetch_array($sql)) {
     $res[]=array(
         'id'=>$row['id_terreno'],
         'name'=>$row['nombre_terreno'],
-        'unit'=>$row['n_plantas'],
-        'type'=>$row['tipo_cultivo'],
-        'status'=>$row['estado'],
-        'dim'=>$row['dimencion']
+        'id_table'=>$row['id_terrPlan']
     );
 }
 echo $json=json_encode($res);

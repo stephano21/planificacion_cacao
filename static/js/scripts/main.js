@@ -1,8 +1,10 @@
-import { alert_login, input_only_numbers, alerts } from "./login.js";
+import { alert_login, input_only_numbers, alerts ,update_alert} from "./login.js";
 $(function () {
+    var  material=[];
+    var  terreno=[];
+    var  trabajador=[];
     load_materiales();
     load_terreno();
-    load_terrenoStatus()
     $("#login").submit((e) => {
         let user = $("#user").val();
         let password = $("#password").val();
@@ -35,6 +37,39 @@ $(function () {
     $("#t_plant").keyup(function (e) {
         input_only_numbers('t_plant')
     });
+/* -------------------COSECHA -------------------------- */
+$("#planing_c").change(function () {
+    if ($("#p_material option:selected").val()!=0 ) {
+        let id=$("#planing_c option:selected").val();
+        load_terreno_c(id);
+    }
+    
+});
+    /* ----------planing -------------------------- */
+    $("#p_material").change(function () {
+        if ($("#p_material option:selected").val()!=0 ) {
+           let data=[$("#p_material option:selected").val(),$("#p_material option:selected").text()]
+        material.push(data);
+        load_material();
+        }
+        
+    });
+    $("#p_terreno").change(function () {
+        if ($("#p_terreno option:selected").val()!=0) {
+            let data=[$("#p_terreno option:selected").val(),$("#p_terreno option:selected").text()]
+        terreno.push(data);
+        load_terrenop();
+        }
+        
+    });
+    $("#p_trabajador").change(function () {
+        if ($("#p_trabajador option:selected").val()!=0) {
+            let data=[$("#p_trabajador option:selected").val(),$("#p_trabajador option:selected").text()]
+        trabajador.push(data);
+        load_trabajadorp();
+        }
+        
+    });
     $("#create_account").submit((e) => {
         let id = $("#id").val();
         let name = $("#name").val();
@@ -57,6 +92,27 @@ $(function () {
         e.preventDefault();
     });
     /* ---------------------- REGISTER || FLAGS---------------------------- */
+    $("#cosecha").submit((e) => {
+        let  template ='';
+        $("input[name='qts']").each(function() {
+            console.log($(this).val());
+            //console.log($(this).attr("id"));
+            console.log($(this).attr("table"));
+            if(!update_production($(this).val(),$(this).attr("table"))){
+                //lerts('success',$(this).attr("terr")+' Resistrado exitrosamente');
+                template+=update_alert('success',$(this).attr("terr")+' Resistrado exitrosamente')
+            }
+        });
+        $("#alert").html(template);
+        
+        let terrenos = $(".qts");
+        for (let i = 0; i < terrenos.length; i++) {
+            const element = terrenos[i];
+            
+            console.log(element)
+        }
+        e.preventDefault();
+    });
     $("#material").submit((e) => {
         let flag = 1;
         let name = $("#m_name").val();
@@ -90,7 +146,6 @@ $(function () {
             type: "POST",
             data: { flag, name, plantas, cultivo, dim },
             success: function (response) {
-                load_materiales()
                 let data = JSON.parse(response);
                 console.log(data.message)
                 alerts(data.class, data.message);
@@ -100,38 +155,99 @@ $(function () {
         })
         e.preventDefault()
     });
-    $("#plan").submit((e) => {
+    $("#planing").submit((e) => {
         let flag = 3;
         let name = $("#p_name").val();
-        let plantas = $("#t_plant").val();
+        let inicio = $("#p_inicio").val();
+        let fin = $("#p_fin").val();
+        let tipo = $("#p_tipo option:selected").text();
 
-        let dim = $("#t_dim").val();
         $.ajax({
             url: "../php/scripts/register.php",
             type: "POST",
-            data: { flag, name, plantas, dim },
+            data: { flag, name, inicio, fin, tipo, material,terreno,trabajador,},
             success: function (response) {
+                console.log(response)
                 let data = JSON.parse(response);
                 console.log(data.message)
                 alerts(data.class, data.message);
+                material=[];
+                terreno=[];
+                trabajador=[];
+                $("#lt_mat").html('');
+                $("#lt_ter").html('');
+                $("#lt_tra").html('');
+                $("#planing")[0].reset();
 
             }
-        })
+        });
         e.preventDefault()
     });
     /* ---------------------loaders ------------------------ */
-    function load_terrenoStatus() {
-        let template = `<option selected value="0">Seleccionar Terreno</option>`;
+    function update_production(cantidad, id){
         $.ajax({
-            url: "../php/scripts/load_terreno.php",
-            type: "GET",
-            success: function (response){
-                let data = JSON.parse(response);
-                data.forEach(item => {
-                    template+=`<option value="${item.id}">${item.name}</option>`;
-                });
-                $("#p_terreno").append(template);
+            url:"../php/scripts/update_production.php",
+            type: "POST",
+            data: {id, cantidad,},
+            success:function(response){
+                return JSON.parse(response);
             }
+        });
+    }
+    function load_terreno_c(id){
+        let template =`<h5>Terrenos</h5>`;
+        $.ajax({
+            url: "../php/scripts/load_terreno_c.php",
+            type: "GET",
+            data: {id,},
+            success: function (response) {
+                let data = JSON.parse(response);
+                console.log(data);
+                data.forEach(item => {
+                    template += `
+                    <div class="input-group mb-3" >
+                        <span class="input-group-text">${item.name}</span>
+                        <input type="text" class="form-control" table="${item.id_table}" terr="${item.name}" id="${item.id}" placeholder="Libras producidas" name="qts" aria-label="Username" aria-describedby="basic-addon1" required>
+                    </div>`;
+                });
+                $("#terrenos_c").html(template);
+            }
+        });
+    }
+    function load_material(){
+        let template='';
+        material.forEach(item => {
+            template+=`
+            <div class="alert alert-secondary alert-dismissible fade show col-sm-3 m-1 p-3" role="alert">
+                <strong>${item[1]}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            `;
+            $("#lt_mat").html(template);
+        });
+    }
+    function load_terrenop(){
+        let template='';
+        terreno.forEach(item => {
+            template+=`
+            <div class="alert alert-secondary alert-dismissible fade show col-sm-3 m-1 p-3" role="alert">
+                <strong>${item[1]}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            `;
+            $("#lt_ter").html(template);
+        });
+    }
+    function load_trabajadorp(){
+        let template='';
+        trabajador.forEach(item => {
+            template+=`
+            <div class="alert alert-secondary alert-dismissible fade show col-sm-3 m-1 p-3" role="alert">
+                <strong>${item[1]}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+            `;
+            $("#lt_tra").html(template);
         });
     }
     function load_terreno() {

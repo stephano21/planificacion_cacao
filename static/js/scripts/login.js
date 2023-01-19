@@ -19,3 +19,11 @@ export function alerts(tag, message){
     </div>`;
     $("#alert").html(render);
 }
+export function update_alert(tag, message){
+    let render = `<div class="alert alert-${tag} alert-dismissible fade show" role="alert">
+    <strong>${message}</strong>
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>`;
+    //$("#alert").html(render);
+    return render
+}

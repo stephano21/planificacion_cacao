@@ -129,10 +129,16 @@ $usuario = $_SESSION['user'];
                     </div>
                     <form id="planing" method="post">
                         <div class="card-body">
-                            <div id="alert"></div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Nombre</span>
                                 <input type="text" id="p_name" class="form-control" placeholder="Nombre de planificación" name="id" aria-label="Username" aria-describedby="basic-addon1" required>
+                            </div>
+                            <div class="input-group mb-3">
+                            <select class="form-select" id="p_tipo" aria-label="Default select example">
+                                <option value="0"> Seleccione el tipo de planificacion</option>
+                                <option> Preparcion</option>
+                                <option> Cosecha</option>
+                            </select>
                             </div>
                             <div class="input-group mb-3">
                                 <span class="input-group-text">Fecha de inicio</span>
@@ -143,52 +149,56 @@ $usuario = $_SESSION['user'];
                                 <input type="date" id="p_fin" class="form-control" name="f_fin" aria-label="Username" aria-describedby="basic-addon1" required>
                             </div>
                             <div class="input-group mb-3 row" id="lt_mat">
-                                <div class="alert alert-secondary alert-dismissible fade show col-sm-3 m-1 p-3" role="alert">
-                                    <strong>material 1</strong>
-                                    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-                                </div>
                             </div>
                             <div class="input-group mb-3">
                                 <select class="form-select" id="p_material" aria-label="Default select example" name="tool">
                                     <option selected value="0">Seleccionar Materiales</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Twoterreno</option>
-                                    <option value="3">Three</option>
+                                    <?php
+                                    $sql = mysqli_query($conn,"SELECT *  FROM producto");
+                                    while($rows=mysqli_fetch_array($sql)){;?>
+                                    <option value="<?php echo $rows['id_producto'];?>"><?php echo $rows['nombre_product'];?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
+                            <div class="input-group mb-3 row" id="lt_ter"></div>
                             <div class="input-group mb-3">
-                                <button type="button" class="btn btn-primary" id="bt_material">Añadir material</button>
-                            </div>
-                            <div class="input-group mb-3">
-                                <select class="form-select" id="pt_lote" aria-label="Default select example" id="p_terreno" name="lote">
+                                <select class="form-select" aria-label="Default select example" id="p_terreno" name="lote">
                                     <option selected value="0">Seleccionar Terreno</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <?php
+                                    $sql = mysqli_query($conn,"SELECT * FROM terreno WHERE estado='0' ORDER BY nombre_terreno");
+                                    while($rows=mysqli_fetch_array($sql)){;?>
+                                    <option value="<?php echo $rows['id_terreno'];?>"><?php echo $rows['nombre_terreno'];?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-primary" id="bt_terreno">Añadir terreno</button>
-                            </div>
-
+                            <div class="input-group mb-3 row" id="lt_tra"></div>
                             <div class="input-group mb-3">
                                 <select class="form-select" id="p_trabajador" aria-label="Default select example" name="insumo">
                                     <option selected value="0">Seleccionar Tabajador</option>
-                                    <option value="1">One</option>
-                                    <option value="2">Two</option>
-                                    <option value="3">Three</option>
+                                    <?php
+                                    $sql = mysqli_query($conn,"SELECT *  FROM usuario");
+                                    while($rows=mysqli_fetch_array($sql)){;?>
+                                    <option value="<?php echo $rows['cedula'];?>"><?php echo $rows['Nombre_completo'];?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
-                            </div>
-                            <div class="input-group mb-3">
-                                <button type="button" class="btn btn-primary" id="bt_trabajador">Añadir Tabajador</button>
                             </div>
                             <div class="input-group mb-3">
                                 <input type="submit" class="form-control btn btn-primary" aria-label="Username" aria-describedby="basic-addon1" value="Registrar">
                             </div>
+                            <div id="alert"></div>
                         </div>
                     </form>
                 </div>
             </section>
+            <div class="input-group mb-3">
+            <div class="input-group mb-3">
+            <div class="input-group mb-3">
         </div>
     </div>
 

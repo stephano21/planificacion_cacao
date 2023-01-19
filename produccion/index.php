@@ -31,7 +31,7 @@ $usuario = $_SESSION['user'];
         <div class="row">
             <div class="col-sm-4">
                 <!-- cosecha -->
-                <div class="card pd-2 " style="width: 18rem;">
+                <div class="card pd-2 " style="width: 20rem;">
                     <div class="card-header">
                         Registro de la cosecha
                     </div>
@@ -39,17 +39,18 @@ $usuario = $_SESSION['user'];
                         <div class="card-body">
                             <div id="alert"></div>
                             <div class="input-group mb-3">
-                                <select id="planing" class="form-control">
+                                <select id="planing_c" class="form-control">
                                     <option value="0">selecione la planificación</option>
-                                    <option value="1">Planificación1</option>
-                                    <option value="2">Planificación2</option>
-                                    <option value="3">Planificación3</option>
+                                    <?php
+                                    $sql = mysqli_query($conn,"SELECT *  FROM planificacion");
+                                    while($rows=mysqli_fetch_array($sql)){;?>
+                                    <option value="<?php echo $rows['id_planificacion'];?>"><?php echo $rows['nombre_p'];?></option>
+                                    <?php
+                                    }
+                                    ?>
                                 </select>
                             </div>
-                            <div class="input-group mb-3">
-                                <span class="input-group-text">Cosecha</span>
-                                <input type="text" id="c_quintales" class="form-control" placeholder="número de quintales" name="area" aria-label="Username" aria-describedby="basic-addon1" required>
-                            </div>
+                            <div id="terrenos_c"></div>
                             <div class="input-group mb-3">
                                 <input type="submit" class="form-control btn btn-primary" aria-label="Username" aria-describedby="basic-addon1" value="Registrar cosecha">
                             </div>

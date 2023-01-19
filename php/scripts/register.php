@@ -30,7 +30,14 @@ if(isset($_POST['flag'])){
         $dim= $_POST['dim'];
         echo create_lote($name,$plantas,$t_cultivo,$dim);
     }elseif($flag==3){
-        echo'emmppitry';
+        $name= $_POST['name'];
+        $inicio= $_POST['inicio'];
+        $fin = $_POST['fin'];
+        $type = $_POST['tipo'];
+        $l_material = $_POST['material'];
+        $l_terreno = $_POST['terreno'];
+        $l_trabajador = $_POST['trabajador'];
+        echo planificacion($name,$inicio,$fin,$l_material,$l_terreno,$l_trabajador,$type);
     }elseif($flag==4){
         echo 'RSPISE';
     }
